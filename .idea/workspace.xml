@@ -1,29 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="21dd5125-4d91-4af4-b8c7-4a7a9b81b610" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Chess-Minimax2.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Black Bishop.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Black King.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Black Knight.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Black Pawn.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Black Queen.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Black Rook.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DrawPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MyFrame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Scores.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/White Bishop.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/White King.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/White Knight.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/White Pawn.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/White Queen.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/White Rook.png" afterDir="false" />
+    <list default="true" id="21dd5125-4d91-4af4-b8c7-4a7a9b81b610" name="Changes" comment="Setup">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,6 +36,11 @@
     "last_opened_file_path": "/Users/joeysabo/IdeaProjects/Chess-Minimax2/src"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -65,6 +50,14 @@
       <option name="presentableId" value="Default" />
       <updated>1674078184958</updated>
     </task>
+    <task id="LOCAL-00001" summary="Setup">
+      <created>1674078851813</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1674078851813</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -77,5 +70,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Setup" />
+    <option name="LAST_COMMIT_MESSAGE" value="Setup" />
   </component>
 </project>

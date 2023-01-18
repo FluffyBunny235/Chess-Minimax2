@@ -461,7 +461,7 @@ public class Main {
                 System.out.println("Checkmate");
                 /*
                 if (aiExists) {
-                    File fileToBeModified = new File("~/IdeaProjects/Chess-Minimax/Scores.txt");
+                    File fileToBeModified = new File("~/IdeaProjects/Chess-Minimax2/Scores.txt");
                     String content = "";
                     BufferedReader reader = new BufferedReader(new FileReader(fileToBeModified));
                     String line = reader.readLine();
