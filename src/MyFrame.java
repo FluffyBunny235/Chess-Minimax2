@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class MyFrame extends JFrame implements ActionListener {
@@ -16,7 +17,7 @@ public class MyFrame extends JFrame implements ActionListener {
     private String p = "Start";
     private final int peep;
     private int moves = 0;
-    MyFrame(String[][] pBoard, int peep, boolean canMove) {
+    MyFrame(String[][] pBoard, int peep, boolean canMove) throws IOException {
         this.canMove = canMove;
         board = pBoard;
         this.peep = peep;
@@ -79,28 +80,44 @@ public class MyFrame extends JFrame implements ActionListener {
                 if (j == 'G') {j = 'H';}
                 else if (j == 'C') {j = 'A';}
                 willMove = "C" + j;
-                a = Main.determineMove('C', board, "C" + j, isWhiteMoving, true, p, Main.blackKingMoved, Main.whiteKingMoved, false);
+                try {
+                    a = Main.determineMove('C', board, "C" + j, isWhiteMoving, true, p, Main.blackKingMoved, Main.whiteKingMoved, false);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
                 c = a;
             }
             else if (willMove.length() == 7){
-                a = Main.determineMove(willMove.charAt(0), board, willMove, isWhiteMoving, true, p, Main.blackKingMoved, Main.whiteKingMoved, false);
+                try {
+                    a = Main.determineMove(willMove.charAt(0), board, willMove, isWhiteMoving, true, p, Main.blackKingMoved, Main.whiteKingMoved, false);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
             }
             if (a) {
                 moves++;
                 if (!c && board[willMove.charAt(5)-'A'][willMove.charAt(6)-'1'].charAt(1) == 'K') {canMove = false;}
-                Main.determineMove(willMove.charAt(0), board, willMove, isWhiteMoving, false, p, Main.blackKingMoved, Main.whiteKingMoved, false);
+                try {
+                    Main.determineMove(willMove.charAt(0), board, willMove, isWhiteMoving, false, p, Main.blackKingMoved, Main.whiteKingMoved, false);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
                 selectedButton = "88";
                 this.p = willMove;
                 paint(board,willMove,isWhiteMoving,p);
                 isWhiteMoving = !isWhiteMoving;
                 if (peep == 1 && canMove) {
                     canMove = false;
-                    AIMove(willMove);
+                    try {
+                        AIMove(willMove);
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
                 }
             }
         }
     }
-    public void AIMove(String willMove){
+    public void AIMove(String willMove) throws IOException {
         if (!Main.gameOver) {
             String move;
             if (moves == 1) {

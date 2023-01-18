@@ -1,4 +1,6 @@
 import java.io.*;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.*;
 public class Main {
     public static boolean blackKingMoved = false;
@@ -15,7 +17,7 @@ public class Main {
     public static boolean[][] rooks = new boolean[2][2];
     public static int movesSinceCapture = 0;
     public static ArrayList<String> boardStates = new ArrayList<>(10);
-    public static boolean stalemate(String previousMove, String[][] board, boolean[][] isBlackAttacking, boolean[][] isWhiteAttacking) {
+    public static boolean stalemate(String previousMove, String[][] board, boolean[][] isBlackAttacking, boolean[][] isWhiteAttacking) throws IOException {
         //no moves available
         boolean mover = true;
         if (!previousMove.equals("Start")) {mover = !(board[previousMove.charAt(5)-'A'][previousMove.charAt(6)-'1'].charAt(0) == 'W');}
@@ -84,11 +86,11 @@ public class Main {
         }
         return whiteIsAttacking[x][y];
     }
-    public static boolean whiteLost(String[][] board, String prev) {
+    public static boolean whiteLost(String[][] board, String prev) throws IOException {
         ArrayList<String> a = new ArrayList<>(1);
         return lookAhead(board, 2, true, prev, blackKingMoved, whiteKingMoved, -Integer.MAX_VALUE, Integer.MAX_VALUE, true, true, false, a) < -1000 && isWhiteInCheck(board, isBlackAttacking);
     }
-    public static boolean blackLost(String[][] board, String prev) {
+    public static boolean blackLost(String[][] board, String prev) throws IOException {
         ArrayList<String> a = new ArrayList<>(1);
         return lookAhead(board, 2, false, prev, blackKingMoved, whiteKingMoved, -Integer.MAX_VALUE, Integer.MAX_VALUE, true, true, false, a) > 1000 && isBlackInCheck(board, isWhiteAttacking);
     }
@@ -146,7 +148,7 @@ public class Main {
         board[x][y] = "  ";
         return board;
     }
-    public static void updateAttackedPieces(String[][] board) {
+    public static void updateAttackedPieces(String[][] board) throws IOException {
         for (int i =0; i < 8; i++) {
             for (int k =0; k<8;k++) {
                 isBlackAttacking[i][k] = false;
@@ -350,7 +352,7 @@ public class Main {
         else {newBoard[a][c] += move.charAt(0);}
         return newBoard;
     }
-    public static boolean determineMove(char p, String[][] board, String move, boolean mover, boolean request, String preMove, boolean bKing, boolean wKing, boolean bypass) {
+    public static boolean determineMove(char p, String[][] board, String move, boolean mover, boolean request, String preMove, boolean bKing, boolean wKing, boolean bypass) throws IOException {
         boolean madeMove = false;
         if (p == 'C' && ((mover && !wKing) || (!mover && !bKing)) && move.length() == 2 && ((move.charAt(1) == 'A' && (mover && board[0][0].equals("WR") || !mover && board[0][7].equals("BR"))) || (move.charAt(1) == 'H'&& (mover && board[7][0].equals("WR") || !mover && board[7][7].equals("BR"))))) {
             boolean canMove = castle(move, board, mover, true);
@@ -459,15 +461,15 @@ public class Main {
             if (b || w) {
                 gameOver = true;
                 System.out.println("Checkmate");
-                /*
+
                 if (aiExists) {
-                    File fileToBeModified = new File("~/IdeaProjects/Chess-Minimax2/Scores.txt");
+                    File fileToBeModified = new File("src/Scores.txt");
                     String content = "";
                     BufferedReader reader = new BufferedReader(new FileReader(fileToBeModified));
                     String line = reader.readLine();
                     boolean foundName = false;
                     while (line != null) {
-                        if (line.substring(0, name.length()).equals(name)) {
+                        if (line.startsWith(name)) {
                             foundName = true;
                             line = editScores(line, w, !aiTeam);
                             System.out.println(line);
@@ -486,8 +488,6 @@ public class Main {
                     reader.close();
                     writer.close();
                 }
-
-                 */
             }
             if (s) {
                 gameOver = true;
@@ -506,7 +506,7 @@ public class Main {
             return name + ":" + playerScore + "-" + (aiScore+1);
         }
     }
-    public static boolean castle(String move, String[][] board, boolean mover, boolean request) {
+    public static boolean castle(String move, String[][] board, boolean mover, boolean request) throws IOException {
         int castleX = (int) move.charAt(1) - 'A';
         boolean makeMove = castleX == 0 || castleX == 7;
         int y = 0;
@@ -1039,7 +1039,7 @@ public class Main {
         return r;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         // Move notation [Piece abbreviation] [starting square]-[ending square]
         Scanner input = new Scanner(System.in);
         int people = 0;
@@ -1198,7 +1198,7 @@ public class Main {
 */
     }
     //AI
-    public static double lookAhead(String[][] board, int times, boolean mover, String prevMove, boolean bKing, boolean wKing, double alpha, double beta, boolean dontMove, boolean bypassKing, boolean checkForStalemate, ArrayList<String> boardStates2) {
+    public static double lookAhead(String[][] board, int times, boolean mover, String prevMove, boolean bKing, boolean wKing, double alpha, double beta, boolean dontMove, boolean bypassKing, boolean checkForStalemate, ArrayList<String> boardStates2) throws IOException {
         times--;
         long startTime = 0;
         if (times == 4) {
