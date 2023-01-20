@@ -1461,17 +1461,25 @@ public class Main {
             }
         }
         if (times == 4 && !dontMove) {
-            double f = 0.1;
-            if (mover) {f = -0.1;}
-            double[] a = score(testBoard(board, moves.get(index), mover, prevMove), 0);
-            System.out.println("Current eval: " + (double)((int)((a[1]-a[2])*100))/100);
-            System.out.println("Future eval: " + ((double)((int)((k+f)*100))/100));
-            System.out.println("AI move: " + moves.get(index));
-            long elapsedTime = System.currentTimeMillis() - startTime;
-            long elapsedSeconds = elapsedTime / 1000;
-            System.out.println(elapsedSeconds + "s");
-            determineMove(moves.get(index).charAt(0), currentBoard, moves.get(index), mover, false, previousMove, bKing, wKing, true);
-            frame.paint(board, moves.get(index), mover, prevMove);
+            if (!determineMove(moves.get(index).charAt(0), board, moves.get(index), mover, true, prevMove, bKing, wKing, false)) {
+                System.out.println("I Resign");
+                gameOver = true;
+            }
+            else {
+                double f = 0.1;
+                if (mover) {
+                    f = -0.1;
+                }
+                double[] a = score(testBoard(board, moves.get(index), mover, prevMove), 0);
+                System.out.println("Current eval: " + (double) ((int) ((a[1] - a[2]) * 100)) / 100);
+                System.out.println("Future eval: " + ((double) ((int) ((k + f) * 100)) / 100));
+                System.out.println("AI move: " + moves.get(index));
+                long elapsedTime = System.currentTimeMillis() - startTime;
+                long elapsedSeconds = elapsedTime / 1000;
+                System.out.println(elapsedSeconds + "s");
+                determineMove(moves.get(index).charAt(0), currentBoard, moves.get(index), mover, false, previousMove, bKing, wKing, true);
+                frame.paint(board, moves.get(index), mover, prevMove);
+            }
         }
         return k;
     }
