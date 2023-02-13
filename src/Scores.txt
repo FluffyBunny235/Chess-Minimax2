@@ -1,3 +1,8 @@
-joey:0-6
+joey:0-15
 chess.com:0-1
 andy:1-2
+sahil:0-3
+balls:0-1
+martin bot:0-1
+jimmy bot:0-1
+didi:0-1

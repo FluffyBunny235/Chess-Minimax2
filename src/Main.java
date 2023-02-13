@@ -1,10 +1,9 @@
 import java.io.*;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.*;
 public class Main {
     public static boolean blackKingMoved = false;
     public static String name = "";
+    public static int depth = -1;
     public static boolean gameOver = false;
     public static String[][] currentBoard;
     public static boolean whiteKingMoved = false;
@@ -1054,6 +1053,15 @@ public class Main {
                     aiExists = false;}
                 case "1" -> {
                     aiExists = true;
+                    while (depth == -1) {
+                        System.out.println("What depth should I search at?");
+                        String d = input.nextLine();
+                        try {
+                            depth = Integer.parseInt(d);
+                        } catch (Exception e) {
+                            System.out.println("Not possible");
+                        }
+                    }
                     System.out.println("Which team are you playing?");
                     String x = input.nextLine();
                     if (x.equalsIgnoreCase("black")) {
@@ -1201,7 +1209,7 @@ public class Main {
     public static double lookAhead(String[][] board, int times, boolean mover, String prevMove, boolean bKing, boolean wKing, double alpha, double beta, boolean dontMove, boolean bypassKing, boolean checkForStalemate, ArrayList<String> boardStates2) throws IOException {
         times--;
         long startTime = 0;
-        if (times == 4) {
+        if (times == depth-1) {
             startTime = System.currentTimeMillis();
         }
         ArrayList<String> moves = new ArrayList<>(40);
@@ -1433,7 +1441,7 @@ public class Main {
                 boardStates2.add(moves.get(i));
                 scores[i] = lookAhead(testBoard(board, moves.get(i), mover, prevMove), times, !mover, moves.get(i), bKing, wKing, alpha, beta, dontMove, bypassKing, checkForStalemate, boardStates2);
                 boardStates2.remove(boardStates2.size()-1);
-                if (times == 4) {
+                if (times == depth-1) {
                     System.out.print("\b\b\b");
                     System.out.print((int) (((double) (i + 1) / (double) moves.size()) * 100) + "%");
                 }
@@ -1447,7 +1455,7 @@ public class Main {
                 break;
             }
         }
-        if (times == 4) {System.out.print("\b\b\b\b");}
+        if (times == depth-1) {System.out.print("\b\b\b\b");}
         double k = 0;
         int index = 0;
         if (moves.size() > 0){
@@ -1460,7 +1468,7 @@ public class Main {
                 }
             }
         }
-        if (times == 4 && !dontMove) {
+        if (times == depth-1 && !dontMove) {
             if (!determineMove(moves.get(index).charAt(0), board, moves.get(index), mover, true, prevMove, bKing, wKing, false)) {
                 System.out.println("I Resign");
                 gameOver = true;

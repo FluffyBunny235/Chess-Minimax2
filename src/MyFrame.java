@@ -126,7 +126,7 @@ public class MyFrame extends JFrame implements ActionListener {
                 paint(board, move, false, p);
             } else {
                 ArrayList<String> a = new ArrayList<>(1);
-                Main.lookAhead(board, 5, isWhiteMoving, willMove, Main.blackKingMoved, Main.whiteKingMoved, -Integer.MAX_VALUE, Integer.MAX_VALUE, false, true, false, a);
+                Main.lookAhead(board, Main.depth, isWhiteMoving, willMove, Main.blackKingMoved, Main.whiteKingMoved, -Integer.MAX_VALUE, Integer.MAX_VALUE, false, true, false, a);
             }
             boolean breaker = false;
             for (int i = 0; i < 8; i++) {

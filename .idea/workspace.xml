@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="21dd5125-4d91-4af4-b8c7-4a7a9b81b610" name="Changes" comment="Bot can resign instead of sacrificing kind in late game">
+    <list default="true" id="21dd5125-4d91-4af4-b8c7-4a7a9b81b610" name="Changes" comment="Updating Scores">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MyFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Scores.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Scores.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -93,7 +94,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674159225697</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Updating Scores">
+      <created>1674239205748</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1674239205748</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -123,8 +131,8 @@
     <MESSAGE value="Scores Update Properly!!" />
     <MESSAGE value="Fixed Final Message Order" />
     <MESSAGE value="Updating the Scores.txt File with my 3 Losses" />
-    <MESSAGE value="Updating Scores" />
     <MESSAGE value="Bot can resign instead of sacrificing kind in late game" />
-    <option name="LAST_COMMIT_MESSAGE" value="Bot can resign instead of sacrificing kind in late game" />
+    <MESSAGE value="Updating Scores" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updating Scores" />
   </component>
 </project>
