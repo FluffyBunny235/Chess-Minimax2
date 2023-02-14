@@ -7,3 +7,4 @@ martin bot:0-1
 jimmy bot:0-1
 didi:0-1
 sawyer:0-1
+megan:0-1
