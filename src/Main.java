@@ -498,7 +498,7 @@ public class Main {
     public static String editScores(String line, boolean whiteLost, boolean playerTeam) {
         int playerScore = Integer.parseInt(line.substring(name.length() + 1, line.indexOf('-')));
         int aiScore = Integer.parseInt(line.substring(line.indexOf('-')+1));
-        if (whiteLost && !playerTeam) {
+        if ((whiteLost && !playerTeam) || (!whiteLost && playerTeam)) {
             return name + ":" + (playerScore+1) + "-" + aiScore;
         }
         else {
@@ -586,7 +586,7 @@ public class Main {
             }
             else {
                 makeMove = (Math.abs(beginX - endX) == 1 && endY - beginY == 1 && board[endX][endY].charAt(0) == 'B');
-                if (preMove.length() > 2) {
+                if (preMove.length() > 5) {
                     char p = preMove.charAt(0);
                     int difference = Math.abs(preMove.charAt(3)-preMove.charAt(6));
                     if (p == 'P' && difference == 2 && (beginX == preMove.charAt(5) - 'A'+1 || beginX == preMove.charAt(5)-'A'-1) && beginY == preMove.charAt(6) - '1') {
@@ -640,7 +640,7 @@ public class Main {
             }
             else {
                 makeMove = (Math.abs(beginX - endX) == 1 && endY - beginY == -1 && board[endX][endY].charAt(0) == 'W');
-                if (preMove.length() > 2) {
+                if (preMove.length() > 5) {
                     char p = preMove.charAt(0);
                     int difference = Math.abs(preMove.charAt(3)-preMove.charAt(6));
                     if (p == 'P' && difference == 2 && (beginX == preMove.charAt(5) - 'A'+1 || beginX == preMove.charAt(5)-'A'-1) && beginY == preMove.charAt(6) - '1') {
